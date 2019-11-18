@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scott.ds.mapper.SysUserScrectMapper" >
+  <resultMap id="BaseResultMap" type="com.scott.ds.entity.SysUserScrect" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, account, password, salt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.scott.ds.entity.SysUserScrectKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_screct
+    where id = #{id,jdbcType=BIGINT}
+      and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.scott.ds.entity.SysUserScrectKey" >
+    delete from sys_user_screct
+    where id = #{id,jdbcType=BIGINT}
+      and user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.scott.ds.entity.SysUserScrect" >
+    insert into sys_user_screct (id, user_id, account, 
+      password, salt)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scott.ds.entity.SysUserScrect" >
+    insert into sys_user_screct
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scott.ds.entity.SysUserScrect" >
+    update sys_user_screct
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scott.ds.entity.SysUserScrect" >
+    update sys_user_screct
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+      and user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>
