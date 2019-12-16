@@ -1,4 +1,4 @@
-package com.scott.ds.controller;
+package com.scott.ds.controller.api;
 
 import com.scott.ds.config.AnRateLimiter;
 import com.scott.ds.service.RedisService;
@@ -6,7 +6,6 @@ import com.scott.ds.service.SysUserService;
 import com.scott.ds.utils.Ognl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

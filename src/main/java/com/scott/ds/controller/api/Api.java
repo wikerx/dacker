@@ -1,6 +1,7 @@
 package com.scott.ds.controller.api;
 
 import com.scott.ds.config.AnRateLimiter;
+import com.scott.ds.config.RecordLog;
 import com.scott.ds.limit.AuthRequired;
 import com.scott.ds.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class Api {
      * 鉴权API的调用必须符合设定规则
      * header中 Authentication 不为空
      * */
+    @RecordLog("鉴权接口调用")
     @RequestMapping(value = "auth",method = RequestMethod.POST)
     @AnRateLimiter(timeout = 1, timeunit = TimeUnit.SECONDS,permitsPerSecond = 10)
     @AuthRequired
