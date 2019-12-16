@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Documented
 public @interface AnRateLimiter {
     //以固定数值往令牌桶添加令牌
-    double permitsPerSecond() default 5;
+    double permitsPerSecond() default DefaultSystemConfig.AUTH_PERMISION;
 
     //获取令牌最大等待时间
     long timeout();
